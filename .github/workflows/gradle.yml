@@ -18,4 +18,4 @@ jobs:
         with:
           gradle-version: 8.6
       - run: cd app
-          make build
+      - run: make build
