@@ -10,7 +10,7 @@ import java.util.TreeMap;
 
 
 public class Differ {
-    public static String generate(File file1, File  file2) throws IOException {;
+    public static String generate(File file1, File  file2) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         Map<String, Object> file1Contents = mapper.readValue(file1, Map.class);
         Map<String, Object> file2Contents = mapper.readValue(file2, Map.class);

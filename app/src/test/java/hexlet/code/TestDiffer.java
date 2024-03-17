@@ -18,14 +18,14 @@ public class TestDiffer {
 
     @Test
     public void testDifferGenerate() throws IOException {
-        String expected = "{\n" +
-                "\t- follow: false\n" +
-                "\t  host: hexlet.io\n" +
-                "\t- proxy: 123.234.53.22\n" +
-                "\t- timeout: 50\n" +
-                "\t+ timeout: 20\n" +
-                "\t+ verbose: true\n" +
-                "}";
+        String expected = "{\n"
+            + "\t- follow: false\n"
+            + "\t  host: hexlet.io\n"
+            + "\t- proxy: 123.234.53.22\n"
+            + "\t- timeout: 50\n"
+            + "\t+ timeout: 20\n"
+            + "\t+ verbose: true\n"
+            +  "}";
         var actual = Differ.generate(file1, file2);
         assertEquals(expected, actual);
     }
