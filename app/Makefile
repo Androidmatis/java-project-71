@@ -5,12 +5,12 @@ build:
 	gradle clean build
 
 test:
-	./gradlew test
+	gradle test
 
 report:
-	./gradlew jacocoTestReport
+	gradle jacocoTestReport
 
 lint:
-	./gradlew checkstyleMain
+	gradle checkstyleMain
 
 .PHONY: build
