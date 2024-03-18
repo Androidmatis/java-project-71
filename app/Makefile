@@ -1,9 +1,16 @@
 run-dist:
 	./build/install/app/bin/app
+
 build:
 	gradle clean build
-	gradle checkstyleMain
-	gradle test
-	gradle jacocoTestReport
+
+test:
+	./gradlew test
+
+report:
+	./gradlew jacocoTestReport
+
+lint:
+	./gradlew checkstyleMain
 
 .PHONY: build
