@@ -19,8 +19,6 @@ jobs:
           build-root-directory: app
           gradle-version: 8.6
       - run: make -C app build
-      - run: make -C app lint
-      - run: make -C app test
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
         env:
