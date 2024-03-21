@@ -1,6 +1,9 @@
 package hexlet.code;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
+import com.fasterxml.jackson.dataformat.yaml.snakeyaml.error.MarkedYAMLException;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,10 +13,23 @@ import java.util.TreeMap;
 
 
 public class Differ {
+
     public static String generate(File file1, File  file2) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        Map<String, Object> file1Contents = mapper.readValue(file1, Map.class);
-        Map<String, Object> file2Contents = mapper.readValue(file2, Map.class);
+        Map<String, Object> file1Contents;
+        Map<String, Object> file2Contents;
+        ObjectMapper mapperJSON = new ObjectMapper();
+        ObjectMapper mapperYAML = new YAMLMapper();
+        try {
+            file1Contents = mapperJSON.readValue(file1, Map.class);
+            file2Contents = mapperJSON.readValue(file2, Map.class);
+        } catch (JsonParseException ex) {
+            try {
+                file1Contents = mapperYAML.readValue(file1, Map.class);
+                file2Contents = mapperYAML.readValue(file2, Map.class);
+            } catch (MarkedYAMLException ex1) {
+                return "One or both files are not JSON or YAML files.";
+            }
+        }
         TreeMap<String, Object> contents = new TreeMap<>(file2Contents);
         contents.putAll(file1Contents);
         LinkedHashMap<String, Object> resultMap = new LinkedHashMap<>();
@@ -31,12 +47,7 @@ public class Differ {
                 resultMap.put("+ " + element.getKey().toString(), element.getValue());
             }
         }
-        String result = "";
-        result += "{\n";
-        for (Map.Entry element : resultMap.entrySet()) {
-            result += "\t" + element.getKey().toString() + ": " + element.getValue() + "\n";
-        }
-        result += "}";
-        return result;
+
+        return Parser.concatMapToResultString(resultMap);
     }
 }

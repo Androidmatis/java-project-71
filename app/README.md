@@ -1,4 +1,4 @@
-# java-package
+# Hexlet - 2 project
 
 ![Java CI](https://github.com/Androidmatis/java-project-71/actions/workflows/gradle.yml/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/5a5ef15483cb12955b67/maintainability)](https://codeclimate.com/github/Androidmatis/java-project-71/maintainability)
@@ -6,7 +6,10 @@
 
 ## Asciinemas
 
-Step 5
+### Step 5
+    https://asciinema.org/a/zZpvOPICD7aHnkah80BJyHx6Q
+---
 
-    https://asciinema.org/a/nZ8ZBKYmwBL6n2XNRQo2hKYeZ
+#### Step 7
+    https://asciinema.org/a/1mKnVO0HnkwQN4LLuLR1WLCGG
 ---
