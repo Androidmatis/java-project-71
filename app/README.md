@@ -13,3 +13,7 @@
 #### Step 7
     https://asciinema.org/a/1mKnVO0HnkwQN4LLuLR1WLCGG
 ---
+
+#### Step 8
+    https://asciinema.org/a/5Vv3rmg6ASX7IVd2Kn5fvKTgL
+---
