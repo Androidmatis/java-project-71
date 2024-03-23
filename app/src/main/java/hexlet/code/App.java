@@ -20,13 +20,7 @@ public class App implements Callable<Integer> {
     private String format;
     @Override
     public Integer call() throws Exception {
-        switch (format) {
-            case "stylish":
-                System.out.println(Formaters.stylishFormat(Differ.generate(file1, file2)));
-                break;
-            default:
-                System.out.println(format + " - is an incorrect format.");
-        }
+        System.out.println(Differ.generate(file1, file2, format));
         return 0;
     }
     public static void main(String... args) {

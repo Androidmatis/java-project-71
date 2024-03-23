@@ -17,3 +17,7 @@
 #### Step 8
     https://asciinema.org/a/5Vv3rmg6ASX7IVd2Kn5fvKTgL
 ---
+
+#### Step 9
+    https://asciinema.org/a/XYnvlhq19h7tBQRRSTs3bskqp
+---
