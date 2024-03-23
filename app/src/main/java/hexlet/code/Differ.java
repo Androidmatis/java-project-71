@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class Differ {
 
-    public static String generate(File file1, File  file2, String format) throws IOException {
+    public static String generate(File file1, File  file2, String format) throws Exception {
         Map<String, Object> file1Contents;
         Map<String, Object> file2Contents;
         ObjectMapper mapperJSON = new ObjectMapper();
@@ -28,6 +28,7 @@ public class Differ {
         String result = switch (format) {
             case "stylish" -> Formatter.stylishFormat(resultMap);
             case "plain" -> Formatter.plainFormat(resultMap);
+            case "json" -> Formatter.jsonFormat(resultMap);
             default -> new IOException(format + " - is an incorrect format.").toString();
         };
         return result;

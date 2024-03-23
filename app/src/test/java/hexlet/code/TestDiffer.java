@@ -3,7 +3,6 @@ package hexlet.code;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestDiffer {
@@ -11,7 +10,7 @@ public class TestDiffer {
     File file2;
 
     @Test
-    public void testDifferJsonGenerate() throws IOException {
+    public void testDifferJsonGenerate() throws Exception {
         file1 = new File("src/test/resources/testFile1.json");
         file2 = new File("src/test/resources/testFile2.json");
         String format = "stylish";
@@ -28,7 +27,7 @@ public class TestDiffer {
     }
 
     @Test
-    public void testDifferJsonWithNestedStructuresGenerate() throws IOException {
+    public void testDifferJsonWithNestedStructuresGenerate() throws Exception {
         file1 = new File("src/test/resources/file1.json");
         file2 = new File("src/test/resources/file2.json");
         String format1 = "stylish";
@@ -78,7 +77,7 @@ public class TestDiffer {
     }
 
     @Test
-    public void testDifferYamlGenerate() throws IOException {
+    public void testDifferYamlGenerate() throws Exception {
         file1 = new File("src/test/resources/testFile1.yml");
         file2 = new File("src/test/resources/testFile2.yml");
         String format = "stylish";

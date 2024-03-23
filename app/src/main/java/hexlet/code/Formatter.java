@@ -1,5 +1,8 @@
 package hexlet.code;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.util.List;
 import java.util.Map;
 
@@ -60,6 +63,12 @@ public class Formatter {
             }
         }
         return result.substring(0, result.length() - 1);
+    }
+
+    public static String jsonFormat(Map<String, List<Object>> resultMap) throws JsonProcessingException {
+        ObjectMapper om = new ObjectMapper();
+        String result = om.writeValueAsString(resultMap);
+        return result;
     }
 
     public static String formationOfMeaningForPlainFormat(Object obj) {
