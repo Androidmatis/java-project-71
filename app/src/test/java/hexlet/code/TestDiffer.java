@@ -6,8 +6,8 @@ import java.io.File;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestDiffer {
-    File file1;
-    File file2;
+    private File file1;
+    private File file2;
 
     @Test
     public void testDifferJsonGenerate() throws Exception {

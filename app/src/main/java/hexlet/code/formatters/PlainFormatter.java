@@ -4,15 +4,19 @@ import java.util.List;
 import java.util.Map;
 
 public class PlainFormatter {
+    static final int ADDANDREMOVE = 2;
     public static String convertToString(Map<String, List<Object>> resultMap) {
+        final int equal = 1;
+        final int addAndRemove = 2;
+        final int change = 4;
         String result = "";
         for (Map.Entry element : resultMap.entrySet()) {
             List<Object> val = (List<Object>) element.getValue();
             switch (val.size()) {
-                case 1:
+                case equal:
                     break;
-                case 2:
-                    if (val.get(0).equals("-")) {
+                case addAndRemove:
+                    if (val.get(addAndRemove - 2).equals("-")) {
                         result += "Property '"
                                 + element.getKey().toString()
                                 + "' was removed" + "\n";
@@ -20,17 +24,17 @@ public class PlainFormatter {
                         result += "Property '"
                                 + element.getKey().toString()
                                 + "' was added with value: "
-                                + formationOfMeaningForPlainFormat(val.get(1))
+                                + formationOfMeaningForPlainFormat(val.get(addAndRemove - 1))
                                 + "\n";
                     }
                     break;
-                case 4:
+                case change:
                     result += "Property '"
                             + element.getKey().toString()
                             + "' was updated. From "
-                            + formationOfMeaningForPlainFormat(val.get(1))
+                            + formationOfMeaningForPlainFormat(val.get(addAndRemove - 1))
                             + " to "
-                            + formationOfMeaningForPlainFormat(val.get(3))
+                            + formationOfMeaningForPlainFormat(val.get(addAndRemove + 1))
                             + "\n";
                     break;
                 default:
@@ -38,8 +42,6 @@ public class PlainFormatter {
         }
         return result.substring(0, result.length() - 1);
     }
-
-
 
     public static String formationOfMeaningForPlainFormat(Object obj) {
         return switch (defineObjectClass(obj)) {
