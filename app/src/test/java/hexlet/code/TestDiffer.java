@@ -11,8 +11,6 @@ public class TestDiffer {
 
     @Test
     public void testDifferJsonGenerate() throws Exception {
-        file1 = new File("src/test/resources/testFile1.json");
-        file2 = new File("src/test/resources/testFile2.json");
         String format = "stylish";
         String expected = "{\n"
             + "\t- follow: false\n"
@@ -22,14 +20,14 @@ public class TestDiffer {
             + "\t+ timeout: 20\n"
             + "\t+ verbose: true\n"
             +  "}";
-        var actual = Differ.generate(file1, file2, format);
+        var actual = Differ.generate("src/test/resources/testFile1.json",
+                "src/test/resources/testFile2.json",
+                format);
         assertEquals(expected, actual);
     }
 
     @Test
     public void testDifferJsonWithNestedStructuresGenerate() throws Exception {
-        file1 = new File("src/test/resources/file1.json");
-        file2 = new File("src/test/resources/file2.json");
         String format1 = "stylish";
         String format2 = "plain";
         String expected1 = "{\n"
@@ -70,16 +68,18 @@ public class TestDiffer {
                 + "Property 'setting1' was updated. From 'Some value' to 'Another value'\n"
                 + "Property 'setting2' was updated. From 200 to 300\n"
                 + "Property 'setting3' was updated. From true to 'none'";
-        var actual1 = Differ.generate(file1, file2, format1);
-        var actual2 = Differ.generate(file1, file2, format2);
+        var actual1 = Differ.generate("src/test/resources/file1.json",
+                "src/test/resources/file2.json",
+                format1);
+        var actual2 = Differ.generate("src/test/resources/file1.json",
+                "src/test/resources/file2.json",
+                format2);
         assertEquals(expected1, actual1);
         assertEquals(expected2, actual2);
     }
 
     @Test
     public void testDifferYamlGenerate() throws Exception {
-        file1 = new File("src/test/resources/testFile1.yml");
-        file2 = new File("src/test/resources/testFile2.yml");
         String format = "stylish";
         String expected = "{\n"
                 + "\t- follow: false\n"
@@ -89,7 +89,9 @@ public class TestDiffer {
                 + "\t+ timeout: 20\n"
                 + "\t+ verbose: true\n"
                 +  "}";
-        var actual = Differ.generate(file1, file2, format);
+        var actual = Differ.generate("src/test/resources/testFile1.yml",
+                "src/test/resources/testFile2.yml",
+                format);
         assertEquals(expected, actual);
     }
 }
