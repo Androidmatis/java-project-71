@@ -33,7 +33,7 @@ public class StylishFormatter {
                 default:
             }
         }
-        result += "}";
+        result += "}\n";
         return result;
     }
 }
