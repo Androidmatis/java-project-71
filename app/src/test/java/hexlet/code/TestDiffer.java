@@ -19,7 +19,7 @@ public class TestDiffer {
             + "  - timeout: 50\n"
             + "  + timeout: 20\n"
             + "  + verbose: true\n"
-            +  "}\n";
+            +  "}";
         var actual = Differ.generate("src/test/resources/testFile1.json",
                 "src/test/resources/testFile2.json",
                 format);
@@ -54,7 +54,7 @@ public class TestDiffer {
                 + "  + setting2: 300\n"
                 + "  - setting3: true\n"
                 + "  + setting3: none\n"
-                + "}\n";
+                + "}";
         String expected2 = "Property 'chars2' was updated. From [complex value] to false\n"
                 + "Property 'checked' was updated. From false to true\n"
                 + "Property 'default' was updated. From null to [complex value]\n"
@@ -67,7 +67,7 @@ public class TestDiffer {
                 + "Property 'obj1' was added with value: [complex value]\n"
                 + "Property 'setting1' was updated. From 'Some value' to 'Another value'\n"
                 + "Property 'setting2' was updated. From 200 to 300\n"
-                + "Property 'setting3' was updated. From true to 'none'\n";
+                + "Property 'setting3' was updated. From true to 'none'";
         var actual1 = Differ.generate("src/test/resources/file1.json",
                 "src/test/resources/file2.json",
                 format1);
@@ -88,7 +88,7 @@ public class TestDiffer {
                 + "  - timeout: 50\n"
                 + "  + timeout: 20\n"
                 + "  + verbose: true\n"
-                +  "}\n";
+                +  "}";
         var actual = Differ.generate("src/test/resources/testFile1.yml",
                 "src/test/resources/testFile2.yml",
                 format);
@@ -106,7 +106,9 @@ public class TestDiffer {
         String format1 = "stylish";
         String format2 = "plain";
         String expected1 = Files.readString(Path.of(resultStylishPath));
+        expected1 = expected1.substring(0, expected1.length() - 1);
         String expected2 = Files.readString(Path.of(resultPlainPath));
+        expected2 = expected2.substring(0, expected2.length() - 1);
         var actual1 = Differ.generate(file1JsonPath, file2JsonPath, format1);
         var actual2 = Differ.generate(file1JsonPath, file2JsonPath, format2);
         var actual3 = Differ.generate(file1YmlPath, file2YmlPath, format1);

@@ -40,7 +40,7 @@ public class PlainFormatter {
                 default:
             }
         }
-        return result;
+        return result.substring(0, result.length() - 1);
     }
 
     public static String formationOfMeaningForPlainFormat(Object obj) {
