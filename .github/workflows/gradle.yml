@@ -17,6 +17,7 @@ jobs:
       - name: Change wrapper permissions
       - run: chmod +x ./gradlew
       - name: Build with Gradle
+      - run: ./gradlew build
       - uses: gradle/gradle-build-action@v3
         with:
           build-root-directory: app
@@ -30,5 +31,3 @@ jobs:
         with:
            coverageCommand: make -C app report
            coverageLocations: ${{github.workspace}}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
-           
-      run: ./gradlew build
