@@ -22,6 +22,7 @@ public final class App implements Callable<Integer> {
         System.out.println(Differ.generate(filepath1, filepath2, format));
         return 0;
     }
+
     public static void main(String... args) {
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
