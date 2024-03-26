@@ -13,7 +13,11 @@ jobs:
       - uses: actions/setup-java@v3
         with:
           java-version: '20'
-          distribution: 'corretto'
+          distribution: 'corretto' 
+      - name: Change wrapper permissions
+      - run: chmod +x ./gradlew
+      - name: Build with Gradle
+      - run: ./gradlew build
       - uses: gradle/gradle-build-action@v3
         with:
           build-root-directory: app
