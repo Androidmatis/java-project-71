@@ -6,6 +6,9 @@ import java.util.Map;
 
 
 public class Differ {
+    public static String generate(String filepath1, String  filepath2) throws Exception {
+        return generate(filepath1, filepath2, "stylish");
+    }
 
     public static String generate(String filepath1, String  filepath2, String format) throws Exception {
         String file1Format = definitionFileFormat(filepath1);
